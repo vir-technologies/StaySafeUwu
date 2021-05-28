@@ -1,0 +1,13 @@
+import 'package:flutter/material.dart';
+
+// this widget will be used to add activities to the calendar
+class ActivityAdderWidget extends StatelessWidget {
+  // final Color color;
+
+  ActivityAdderWidget();
+
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}
