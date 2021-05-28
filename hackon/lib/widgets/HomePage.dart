@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'ActivityAdderWidget.dart';
 import 'PlaceholderWidget.dart';
 import 'SampleCalendarCode.dart';
 
@@ -17,15 +18,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int _counter = 0;
-
-  // this is for the bottom nav
   int _currentIndex = 0;
+
   final List<Widget> _children = [
     SampleCalendarCode(),
     PlaceholderWidget(Colors.white),
-    PlaceholderWidget(Colors.deepOrange),
-    // PlaceholderWidget(Colors.green),
+    ActivityAdderWidget(),
   ];
 
   @override
@@ -42,16 +40,16 @@ class _HomePageState extends State<HomePage> {
         currentIndex: _currentIndex,
         items: [
           new BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Icon1'),
+            icon: Icon(Icons.calendar_today),
+            title: Text('Calendar'),
+          ),
+          new BottomNavigationBarItem(
+            icon: Icon(Icons.person),
+            title: Text('Today'),
           ),
           new BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            title: Text('Icon2'),
-          ),
-          new BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Icon3'),
+            title: Text('menu'),
           )
         ],
       ),
