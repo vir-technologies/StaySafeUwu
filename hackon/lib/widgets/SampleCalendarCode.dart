@@ -8,7 +8,7 @@ import 'package:intl/intl.dart' show DateFormat;
 
 // sample calendar code
 
-class MyApp extends StatelessWidget {
+class SampleCalendarCode extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
