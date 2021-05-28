@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'PlaceholderWidget.dart';
+import 'SampleCalendarCode.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key, required this.title}) : super(key: key);
@@ -21,21 +22,11 @@ class _HomePageState extends State<HomePage> {
   // this is for the bottom nav
   int _currentIndex = 0;
   final List<Widget> _children = [
+    SampleCalendarCode(),
     PlaceholderWidget(Colors.white),
     PlaceholderWidget(Colors.deepOrange),
-    PlaceholderWidget(Colors.green)
+    // PlaceholderWidget(Colors.green),
   ];
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
