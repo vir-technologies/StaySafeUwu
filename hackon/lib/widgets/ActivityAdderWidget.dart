@@ -8,6 +8,8 @@ class ActivityAdderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(
+      color: Color.fromRGBO(45, 0, 200, 1),
+    );
   }
 }

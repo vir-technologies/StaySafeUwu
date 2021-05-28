@@ -1,6 +1,9 @@
 // this class is used to "test" from the console, because tests are :))
 // nvm guys the readLineSync doesnt work for some reason :,)
+import 'model/Activity.dart';
 import 'model/MyCalendar.dart';
+import 'model/Activity.dart';
+
 import 'dart:io';
 
 String _lineBreak = "\n =================";
@@ -10,7 +13,15 @@ MyCalendar myCalendar = new MyCalendar();
 void main(List<String> arguments) {
   print('\n starting console tester' + _lineBreak);
 
-  printQuarantineTimerStatus(myCalendar);
+  // printQuarantineTimerStatus(myCalendar);
+}
+
+// adds some preset activities to calendar
+void addActivitiesToCalendar() {
+  // instantiate activities
+  Activity swimming = new Activity(ActivityType.exercise);
+
+// add 2 calendar
 }
 
 void printQuarantineTimerStatus(MyCalendar calendar) {

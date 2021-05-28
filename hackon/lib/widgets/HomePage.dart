@@ -44,7 +44,7 @@ class _HomePageState extends State<HomePage> {
             title: Text('Calendar'),
           ),
           new BottomNavigationBarItem(
-            icon: Icon(Icons.person),
+            icon: Icon(Icons.home),
             title: Text('Today'),
           ),
           new BottomNavigationBarItem(
