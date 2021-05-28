@@ -5,7 +5,6 @@ including minigames, water/food intake, exercise and etc.
 
 // temporary values, should probably add a prompt for user to enter these later
 final int weight = 120; // in pounds
-final bool sex = true; // T male, F female
 int exerciseTime = 0;
 
 enum ActivityType { exercise, drink, minigame }
@@ -68,7 +67,7 @@ class Activity {
 // Activity classes that users can do
 
 class Exercise {
-  int? duration;
+  late int duration; // in minutes
 
   Exercise(int dur) {
     this.duration = dur;
@@ -83,19 +82,27 @@ class Exercise {
   }
 
   String encourageUser() {
-    // TODO: returns an encouraging message for the user
-    return "";
+    String prompt =
+        "You did " + this.duration.toString() + " minutes of exercise today.";
+    if (this.duration >= 30) {
+      return "Awesome! " + prompt;
+    } else if (this.duration >= 60) {
+      return "WOW! " + prompt;
+    } else {
+      return prompt;
+    }
   }
 }
 
 class Drink {
-  int? amount;
+  late int amount;
   double? recommendedDaily;
+
+  final int OZPERGLASS = 8;
 
   Drink(int amt) {
     this.amount = amt;
-    this.recommendedDaily =
-        calculateRecommendedIntake(weight, sex, exerciseTime);
+    this.recommendedDaily = calculateRecommendedIntake(weight, exerciseTime);
   }
 
   int? getAmount() {
@@ -106,17 +113,25 @@ class Drink {
     this.amount = amt;
   }
 
+  void drink(int glasses) {
+    this.amount += glasses * OZPERGLASS;
+  }
+
   /* The following is referenced from
   https://www.slenderkitchen.com/article/how-to-calculate-how-much-water-you-should-drink-a-day */
 
-  double calculateRecommendedIntake(int weight, bool sex, int exerciseTime) {
+  double calculateRecommendedIntake(int weight, int exerciseTime) {
     double recommended = (weight * 2) / 3 + exerciseTime * 12;
     return recommended;
   }
 
   String adviseUser() {
-    // TODO: advise user on how much water they need to satisfy the recommended daily intake
-    return "";
+    String prompt = "You drank " +
+        this.amount.toString() +
+        "oz out of the " +
+        this.recommendedDaily.toString() +
+        "oz recommended today.";
+    return prompt;
   }
 }
 
