@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'ActivityAdderWidget.dart';
+import 'ActivityAdder.dart';
 import 'PlaceholderWidget.dart';
 import 'SampleCalendarCode.dart';
 
@@ -23,7 +23,7 @@ class _HomePageState extends State<HomePage> {
   final List<Widget> _children = [
     SampleCalendarCode(),
     PlaceholderWidget(Colors.white),
-    ActivityAdderWidget(),
+    ActivityAdder(),
   ];
 
   @override
