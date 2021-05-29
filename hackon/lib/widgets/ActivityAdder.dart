@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:hackon/widgets/PlaceholderWidget.dart';
 
 // MENU
 int weight = 0;
@@ -19,21 +18,108 @@ class ActivityAdder extends StatefulWidget {
 }
 
 class _ActivityAdderState extends State<ActivityAdder> {
+  // place changeable fields here
+
+  // Create a global key that uniquely identifies the Form widget
+  // and allows validation of the form.
+  //
+  // Note: This is a `GlobalKey<FormState>`,
+  // not a GlobalKey<MyCustomFormState>.
+  final _formKey = GlobalKey<FormState>();
+
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+      print("increment counter pressed");
+    });
+  }
+
+  Padding textField(String labelText) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: 20.0,
+      ),
+      child: TextFormField(
+        decoration: InputDecoration(
+          labelText: labelText,
+        ),
+        // The validator receives the text that the user has entered.
+        validator: (value) {
+          if (value == null || value.isEmpty) {
+            return 'Please enter some text';
+          }
+          return null;
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("new Activity"),
+        backgroundColor: Colors.blueGrey,
+      ),
       body: Center(
-        child: TextField(
-          onChanged: (String str) {
-            try {
-              weight = int.parse(str);
-              print(weight);
-            } catch (e) {
-              print("NOT A NUMBER NOOB");
-            }
-          },
+        child: Column(
+          // mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'YEET COUNTER:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.headline4,
+            ),
+            Form(
+              key: _formKey,
+              child: Column(children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 20.0,
+                  ),
+                  child: TextFormField(
+                    decoration: InputDecoration(
+                      labelText: "Activity Name",
+                    ),
+                    // The validator receives the text that the user has entered.
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter some text';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                textField("some other thing we'd want"),
+                Container(
+                  margin: EdgeInsets.symmetric(
+                    vertical: 10.0,
+                  ),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        // if valid, display snackbar (pop-up at bottom screen)
+                        ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(content: Text('Activity saved')));
+                      }
+                    },
+                    child: Text('Submit'),
+                  ),
+                ),
+              ]),
+            ),
+          ],
         ),
       ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increments the counter',
+        child: Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
