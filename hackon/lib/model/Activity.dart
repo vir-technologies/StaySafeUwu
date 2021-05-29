@@ -12,32 +12,33 @@ int exerciseTime = 0;
 
 enum ActivityType { exercise, drink, minigame }
 
-class Activity {
+class Activity extends Event {
   Object? type; // Exercise, Drink, (Minigame)
   String? notes;
 
   /* default constructor for activity only includes activity type */
-  Activity(ActivityType type) {
+  Activity(ActivityType type, DateTime date) : super(date: date) {
     setType(type, 0);
     this.notes = "";
   }
 
   /* constructor with activity type and value associated to activity */
-  Activity.withValue(ActivityType type, int value) {
+  Activity.withValue(ActivityType type, int value, DateTime date)
+      : super(date: date) {
     setType(type, value);
     this.notes = "";
   }
 
   /* constructor with activity type and user notes */
-  Activity.withNote(ActivityType type, String note) {
+  Activity.withNote(ActivityType type, this.notes, DateTime date)
+      : super(date: date) {
     setType(type, 0);
-    this.notes = note;
   }
 
   /* constructor with activity type and both value and user notes */
-  Activity.withBoth(ActivityType type, int value, String note) {
+  Activity.withBoth(ActivityType type, int value, this.notes, DateTime date)
+      : super(date: date) {
     setType(type, value);
-    this.notes = note;
   }
 
   /* constructs and sets type of activity and associated value to field */

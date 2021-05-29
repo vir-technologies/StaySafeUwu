@@ -2,7 +2,6 @@
 // nvm guys the readLineSync doesnt work for some reason :,)
 import 'model/Activity.dart';
 import 'model/MyCalendar.dart';
-import 'model/Activity.dart';
 
 import 'dart:io';
 
@@ -19,7 +18,7 @@ void main(List<String> arguments) {
 // adds some preset activities to calendar
 void addActivitiesToCalendar() {
   // instantiate activities
-  Activity swimming = new Activity(ActivityType.exercise);
+  Activity swimming = new Activity(ActivityType.exercise, DateTime.now());
 
 // add 2 calendar
 }

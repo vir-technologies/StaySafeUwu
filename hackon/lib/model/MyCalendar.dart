@@ -1,5 +1,4 @@
 import 'Activity.dart';
-import 'Activity.dart';
 
 class MyCalendar {
   // List<MyEntry> entries = []; // should it be a list or a set?
@@ -27,8 +26,8 @@ class MyCalendar {
 
 // setters
   // adds activity to the calendar
-  void addActivity(Activity activity, DateTime date) {
-    Set<Activity>? activities = entries[date];
+  void addActivity(Activity activity) {
+    Set<Activity>? activities = entries[activity.getDate()];
     if (activities == null) {
       activities = new Set();
     }
@@ -36,8 +35,8 @@ class MyCalendar {
   }
 
   // removes activity to the calendar
-  void removeActivity(Activity activity, DateTime date) {
-    Set<Activity>? activities = entries[date];
+  void removeActivity(Activity activity) {
+    Set<Activity>? activities = entries[activity.getDate()];
     if (activities != null) {
       activities.remove(activity);
     }
