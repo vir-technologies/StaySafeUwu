@@ -56,6 +56,7 @@ class _ActivityAdderState extends State<ActivityAdder> {
         horizontal: 20.0,
       ),
       child: TextFormField(
+        controller: controller,
         decoration: InputDecoration(
           labelText: labelText,
         ),
