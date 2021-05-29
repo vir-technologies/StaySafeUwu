@@ -36,6 +36,7 @@ class _HomePageState extends State<HomePage> {
           title: Text(
             "Zilch: Isaac's child",
           ),
+          centerTitle: true,
         ),
         body: _children[_currentIndex],
         bottomNavigationBar: BottomNavigationBar(
