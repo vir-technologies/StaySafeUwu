@@ -45,6 +45,17 @@ class _ActivityAdderState extends State<ActivityAdder> {
     });
   }
 
+  void _decrementCounter() {
+    setState(() {
+      if (_counter > 0) {
+        _counter--;
+        print("increment counter pressed");
+      } else {
+        print("are you sure age is less than 0?");
+      }
+    });
+  }
+
   // adds a textfield.
   // invalidCondition is a function in a form of (x) => [boolean expression]
   // x is the "value" of the texfield input. eg. if it cant be empty:
@@ -81,12 +92,42 @@ class _ActivityAdderState extends State<ActivityAdder> {
         child: Column(
           // mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'YEET COUNTER:',
+            Container(
+              margin: EdgeInsets.symmetric(
+                vertical: 5.0,
+              ),
             ),
             Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              'Please enter your age:',
+              style: Theme.of(context).textTheme.headline6,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(
+                vertical: 2.0,
+              ),
+            ),
+            Text(
+              '$_counter years old',
+              style: Theme.of(context).textTheme.headline5,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(
+                horizontal: 120.0,
+                vertical: 0.0,
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  ElevatedButton(
+                    onPressed: _incrementCounter,
+                    child: Icon(Icons.add),
+                  ),
+                  ElevatedButton(
+                    onPressed: _decrementCounter,
+                    child: Icon(Icons.remove),
+                  ),
+                ],
+              ),
             ),
             Form(
               key: _formKey,
