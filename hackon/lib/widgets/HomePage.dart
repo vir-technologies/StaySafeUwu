@@ -28,30 +28,34 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(
-          "'HomePageState appBar title here'",
+    return MaterialApp(
+      title: "Homepage title",
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            "'HomePageState appBar title here'",
+          ),
         ),
-      ),
-      body: _children[_currentIndex],
-      bottomNavigationBar: BottomNavigationBar(
-        onTap: onTabTapped,
-        currentIndex: _currentIndex,
-        items: [
-          new BottomNavigationBarItem(
-            icon: Icon(Icons.calendar_today),
-            title: Text('Calendar'),
-          ),
-          new BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('Today'),
-          ),
-          new BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            title: Text('menu'),
-          )
-        ],
+        body: _children[_currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          onTap: onTabTapped,
+          currentIndex: _currentIndex,
+          items: [
+            new BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today),
+              title: Text('Calendar'),
+            ),
+            new BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Today'),
+            ),
+            new BottomNavigationBarItem(
+              icon: Icon(Icons.menu),
+              title: Text('Menu'),
+            )
+          ],
+        ),
       ),
     );
   }

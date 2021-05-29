@@ -13,11 +13,12 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Testing out this shite',
       theme: ThemeData(
         // Notice that after hot reload, the counter didn't reset back to zero;
         // the application is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.yellow,
       ),
       home: HomePage(title: 'how the fucK does this work?'),
     );
