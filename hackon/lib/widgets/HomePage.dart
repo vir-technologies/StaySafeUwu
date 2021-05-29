@@ -34,7 +34,7 @@ class _HomePageState extends State<HomePage> {
       home: Scaffold(
         appBar: AppBar(
           title: Text(
-            "'HomePageState appBar title here'",
+            "Zilch: Isaac's child",
           ),
         ),
         body: _children[_currentIndex],
