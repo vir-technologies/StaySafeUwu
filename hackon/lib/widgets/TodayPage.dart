@@ -158,23 +158,106 @@ class _TodayPageState extends State<TodayPage> {
     /// Example Calendar Carousel without header and custom prev & next button
 
     // this  places the widgets in the actual thing!
-    return new Scaffold(
-        body: SingleChildScrollView(
-      // todo: do we really need this?
-      child: Column(
+    return new Column(children: [
+      Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
-          //custom icon
           Container(
             margin: EdgeInsets.symmetric(horizontal: 16.0),
             child: _calendarCarousel,
           ), // This trailing comma makes auto-formatting nicer for build methods.
-          Placeholder(
-            color: Colors.red,
+          SingleChildScrollView(
+            // padding
+            child: Column(
+              children: [
+                ActivityViewer(),
+                ActivityViewer(),
+                ActivityViewer(),
+              ],
+            ),
+          ),
+        ],
+      )
+    ]);
+  }
+}
+
+//         ],: SingleChildScrollView(
+//       // todo: do we really need this?
+//       child: Column(
+//         crossAxisAlignment: CrossAxisAlignment.start,
+//         mainAxisAlignment: MainAxisAlignment.start,
+//         children: <Widget>[
+//           //custom icon
+//           Container(
+//             margin: EdgeInsets.symmetric(horizontal: 16.0),
+//             child: _calendarCarousel,
+//           ), // This trailing comma makes auto-formatting nicer for build methods.
+//           ActivityViewer(),
+//         ],
+//       ),
+//     ));
+//   }
+// }
+
+// this will display one Activity
+class ActivityViewer extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: 500,
+      height: 100,
+      margin: EdgeInsets.symmetric(
+        horizontal: 15,
+        vertical: 20,
+      ),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+        color: Colors.lightBlue,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 20,
+              vertical: 10,
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Title",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20,
+                  ),
+                ),
+                Text(
+                  "description is going to be here",
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: 30,
+              vertical: 10,
+            ),
+            child: Icon(
+              Icons.accessibility,
+              size: 40,
+              color: Colors.white,
+            ),
           ),
         ],
       ),
-    ));
+    );
   }
 }
