@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:hackon/widgets/PlaceholderWidget.dart';
 
 // MENU
+int weight = 0;
 
 // this widget will be used to add activities to the calendar
 class ActivityAdder extends StatefulWidget {
@@ -20,6 +21,19 @@ class ActivityAdder extends StatefulWidget {
 class _ActivityAdderState extends State<ActivityAdder> {
   @override
   Widget build(BuildContext context) {
-    return PlaceholderWidget(Colors.blue);
+    return Scaffold(
+      body: Center(
+        child: TextField(
+          onChanged: (String str) {
+            try {
+              weight = int.parse(str);
+              print(weight);
+            } catch (e) {
+              print("NOT A NUMBER NOOB");
+            }
+          },
+        ),
+      ),
+    );
   }
 }

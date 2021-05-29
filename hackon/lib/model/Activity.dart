@@ -3,8 +3,10 @@ This class is reserved as the base of all the activities that a user can do,
 including minigames, water/food intake, exercise and etc.
 */
 
+import '../widgets/ActivityAdder.dart';
+
 // temporary values, should probably add a prompt for user to enter these later
-final int weight = 120; // in pounds
+// final int weight = 120; // in pounds
 int exerciseTime = 0;
 
 enum ActivityType { exercise, drink, minigame }
