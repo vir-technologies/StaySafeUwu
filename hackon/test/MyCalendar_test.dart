@@ -14,7 +14,6 @@ import 'package:hackon/model/MyEntry.dart';
 void main() {
   // initialize a calendar and some entries here
   MyCalendar testCalendar = new MyCalendar();
-  MyEntry testEntry = new MyEntry();
 
   test('MyCalendar constructor', () {
     // check that timer is null

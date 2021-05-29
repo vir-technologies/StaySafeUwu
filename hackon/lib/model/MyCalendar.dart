@@ -1,13 +1,17 @@
 import 'Activity.dart';
+import 'Activity.dart';
 
 class MyCalendar {
   // List<MyEntry> entries = []; // should it be a list or a set?
-  Map<DateTime, Iterable<Activity>> entries = new Map();
+  Map<DateTime, Set<Activity>> entries = new Map();
   DateTime? quarantineEndDate; // must be after current date?
 
 // CONSTRUCTOR HERE
 
 // getters
+  Set<Activity>? getActivitiesInOneDay(DateTime date) {
+    return entries[date];
+  }
 
   // gets end date of timer
   DateTime getQuarantineEndDate() {
@@ -22,10 +26,31 @@ class MyCalendar {
   }
 
 // setters
+  // adds activity to the calendar
+  void addActivity(Activity activity, DateTime date) {
+    Set<Activity>? activities = entries[date];
+    if (activities == null) {
+      activities = new Set();
+    }
+    activities.add(activity);
+  }
+
+  // removes activity to the calendar
+  void removeActivity(Activity activity, DateTime date) {
+    Set<Activity>? activities = entries[date];
+    if (activities != null) {
+      activities.remove(activity);
+    }
+  }
 
   // sets quarantine timer
   void setQuarantineEndDate(DateTime date) {
     quarantineEndDate = date;
+  }
+
+  // removes quarantine timer
+  void removeQuarantineEndDate() {
+    quarantineEndDate = null;
   }
 
 // OTHER METHODS
