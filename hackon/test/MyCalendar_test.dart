@@ -5,17 +5,15 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:flutter/material.dart';
-
 import 'package:flutter_test/flutter_test.dart';
 import 'package:hackon/model/MyCalendar.dart';
-import 'package:hackon/model/MyEntry.dart';
 
 void main() {
   // initialize a calendar and some entries here
   MyCalendar testCalendar = new MyCalendar();
 
   test('MyCalendar constructor', () {
+    testCalendar.quarantineDateIsSet();
     // check that timer is null
     // check that collection of Entry is instantiated but empty
   });

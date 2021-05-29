@@ -19,6 +19,7 @@ void main(List<String> arguments) {
 void addActivitiesToCalendar() {
   // instantiate activities
   Activity swimming = new Activity(ActivityType.exercise, DateTime.now());
+  swimming.getNotes(); // todo: not sure what this part is used for
 
 // add 2 calendar
 }

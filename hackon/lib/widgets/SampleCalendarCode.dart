@@ -201,7 +201,7 @@ class _SampleCalendarCodeState extends State<SampleCalendarCode> {
                     fontSize: 24.0,
                   ),
                 )),
-                FlatButton(
+                TextButton(
                   child: Text('PREV'),
                   onPressed: () {
                     setState(() {
@@ -211,7 +211,7 @@ class _SampleCalendarCodeState extends State<SampleCalendarCode> {
                     });
                   },
                 ),
-                FlatButton(
+                TextButton(
                   child: Text('NEXT'),
                   onPressed: () {
                     setState(() {
@@ -224,8 +224,8 @@ class _SampleCalendarCodeState extends State<SampleCalendarCode> {
               ],
             ),
           ),
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 16.0),
+          SingleChildScrollView(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
             child: _calendarCarouselNoHeader,
           ), //
         ],

@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'ActivityAdder.dart';
 import 'SampleCalendarCode.dart';
-import 'SampleCalendarCode.dart';
 import 'TodayPage.dart';
-import 'PlaceholderWidget.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key, required this.title}) : super(key: key);
@@ -47,15 +45,15 @@ class _HomePageState extends State<HomePage> {
           items: [
             new BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today),
-              title: Text('Calendar'),
+              label: "Calendar",
             ),
             new BottomNavigationBarItem(
               icon: Icon(Icons.home),
-              title: Text('Today'),
+              label: "Today",
             ),
             new BottomNavigationBarItem(
               icon: Icon(Icons.menu),
-              title: Text('Menu'),
+              label: "Menu",
             )
           ],
         ),

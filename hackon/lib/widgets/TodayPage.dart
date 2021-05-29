@@ -4,7 +4,6 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
     show CalendarCarousel;
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
-import 'package:intl/intl.dart' show DateFormat;
 
 import 'PlaceholderWidget.dart';
 
@@ -31,8 +30,6 @@ class TodayPage extends StatefulWidget {
 class _TodayPageState extends State<TodayPage> {
   DateTime _currentDate = DateTime.now();
   DateTime _currentDate2 = DateTime.now();
-  String _currentMonth = DateFormat.yMMM().format(DateTime.now());
-  DateTime _targetDateTime = DateTime.now();
 //  List<DateTime> _markedDate = [DateTime(2018, 9, 20), DateTime(2018, 10, 11)];
   static Widget _eventIcon = new Container(
     decoration: new BoxDecoration(
@@ -174,7 +171,7 @@ class _TodayPageState extends State<TodayPage> {
             child: _calendarCarousel,
           ), // This trailing comma makes auto-formatting nicer for build methods.
           Placeholder(
-            color: Colors.blueGrey,
+            color: Colors.red,
           ),
         ],
       ),
