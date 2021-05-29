@@ -4,6 +4,7 @@ including minigames, water/food intake, exercise and etc.
 */
 
 import '../widgets/ActivityAdder.dart';
+import 'package:flutter_calendar_carousel/classes/event.dart';
 
 // temporary values, should probably add a prompt for user to enter these later
 // final int weight = 120; // in pounds

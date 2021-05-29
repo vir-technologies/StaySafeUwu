@@ -50,15 +50,15 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  DateTime _currentDate = DateTime(2019, 2, 3);
-  DateTime _currentDate2 = DateTime(2019, 2, 3);
-  String _currentMonth = DateFormat.yMMM().format(DateTime(2019, 2, 3));
-  DateTime _targetDateTime = DateTime(2019, 2, 3);
+  DateTime _currentDate = DateTime.now();
+  DateTime _currentDate2 = DateTime.now();
+  String _currentMonth = DateFormat.yMMM().format(DateTime.now());
+  DateTime _targetDateTime = DateTime.now();
 //  List<DateTime> _markedDate = [DateTime(2018, 9, 20), DateTime(2018, 10, 11)];
   static Widget _eventIcon = new Container(
     decoration: new BoxDecoration(
         color: Colors.white,
-        borderRadius: BorderRadius.all(Radius.circular(1000)),
+        // borderRadius: BorderRadius.all(Radius.circular(1000)),
         border: Border.all(color: Colors.blue, width: 2.0)),
     child: new Icon(
       Icons.person,
@@ -68,9 +68,9 @@ class _HomePageState extends State<HomePage> {
 
   EventList<Event> _markedDateMap = new EventList<Event>(
     events: {
-      new DateTime(2019, 2, 10): [
+      new DateTime(2021, 2, 10): [
         new Event(
-          date: new DateTime(2019, 2, 10),
+          date: new DateTime(2021, 2, 10),
           title: 'Event 1',
           icon: _eventIcon,
           dot: Container(
@@ -81,12 +81,12 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         new Event(
-          date: new DateTime(2019, 2, 10),
+          date: new DateTime(2021, 2, 10),
           title: 'Event 2',
           icon: _eventIcon,
         ),
         new Event(
-          date: new DateTime(2019, 2, 10),
+          date: new DateTime(2021, 2, 10),
           title: 'Event 3',
           icon: _eventIcon,
         ),
@@ -98,34 +98,34 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     /// Add more events to _markedDateMap EventList
     _markedDateMap.add(
-        new DateTime(2019, 2, 25),
+        new DateTime(2021, 2, 25),
         new Event(
-          date: new DateTime(2019, 2, 25),
+          date: new DateTime(2021, 2, 25),
           title: 'Event 5',
           icon: _eventIcon,
         ));
 
     _markedDateMap.add(
-        new DateTime(2019, 2, 10),
+        new DateTime(2021, 2, 10),
         new Event(
-          date: new DateTime(2019, 2, 10),
+          date: new DateTime(2021, 2, 10),
           title: 'Event 4',
           icon: _eventIcon,
         ));
 
-    _markedDateMap.addAll(new DateTime(2019, 2, 11), [
+    _markedDateMap.addAll(new DateTime(2021, 2, 11), [
       new Event(
-        date: new DateTime(2019, 2, 11),
+        date: new DateTime(2021, 2, 11),
         title: 'Event 1',
         icon: _eventIcon,
       ),
       new Event(
-        date: new DateTime(2019, 2, 11),
+        date: new DateTime(2021, 2, 11),
         title: 'Event 2',
         icon: _eventIcon,
       ),
       new Event(
-        date: new DateTime(2019, 2, 11),
+        date: new DateTime(2021, 2, 11),
         title: 'Event 3',
         icon: _eventIcon,
       ),
