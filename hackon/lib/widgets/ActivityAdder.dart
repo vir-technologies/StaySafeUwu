@@ -26,8 +26,17 @@ class _ActivityAdderState extends State<ActivityAdder> {
   // Note: This is a `GlobalKey<FormState>`,
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+  final otherController = TextEditingController();
 
   int _counter = 0;
+
+  @override
+  void dispose() {
+    // Clean up the controller(s) when the widget is disposed.
+    nameController.dispose();
+    super.dispose();
+  }
 
   void _incrementCounter() {
     setState(() {
@@ -36,7 +45,12 @@ class _ActivityAdderState extends State<ActivityAdder> {
     });
   }
 
-  Padding textField(String labelText) {
+  // adds a textfield.
+  // invalidCondition is a function in a form of (x) => [boolean expression]
+  // x is the "value" of the texfield input. eg. if it cant be empty:
+
+  Padding textField(String labelText, TextEditingController controller,
+      [String? invalidMessage, bool Function(String?)? isInvalid]) {
     return Padding(
       padding: EdgeInsets.symmetric(
         horizontal: 20.0,
@@ -45,12 +59,11 @@ class _ActivityAdderState extends State<ActivityAdder> {
         decoration: InputDecoration(
           labelText: labelText,
         ),
-        // The validator receives the text that the user has entered.
         validator: (value) {
-          if (value == null || value.isEmpty) {
-            return 'Please enter some text';
-          }
-          return null;
+          if (isInvalid != null && isInvalid(value)) {
+            return invalidMessage;
+          } else
+            return null;
         },
       ),
     );
@@ -77,38 +90,24 @@ class _ActivityAdderState extends State<ActivityAdder> {
             Form(
               key: _formKey,
               child: Column(children: <Widget>[
-                Padding(
-                  padding: EdgeInsets.symmetric(
-                    horizontal: 20.0,
-                  ),
-                  child: TextFormField(
-                    decoration: InputDecoration(
-                      labelText: "Activity Name",
-                    ),
-                    // The validator receives the text that the user has entered.
-                    validator: (value) {
-                      if (value == null || value.isEmpty) {
-                        return 'Please enter some text';
-                      }
-                      return null;
-                    },
-                  ),
-                ),
-                textField("some other thing we'd want"),
+                textField("Activity Name", nameController, "cannot be empty",
+                    (x) => (x == null || x.isEmpty)),
+                textField(
+                    "some other field", otherController), // todo: delete this
                 Container(
                   margin: EdgeInsets.symmetric(
                     vertical: 10.0,
                   ),
                   child: ElevatedButton(
-                    onPressed: () {
-                      if (_formKey.currentState!.validate()) {
-                        // if valid, display snackbar (pop-up at bottom screen)
-                        ScaffoldMessenger.of(context).showSnackBar(
-                            SnackBar(content: Text('Activity saved')));
-                      }
-                    },
-                    child: Text('Submit'),
-                  ),
+                      child: Text('Add Activity'),
+                      onPressed: () {
+                        if (_formKey.currentState!.validate()) {
+                          // if valid, display snackbar (pop-up at bottom screen)
+                          ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(content: Text('Activity saved')));
+                          addActivityToCalendar();
+                        }
+                      }),
                 ),
               ]),
             ),
@@ -116,10 +115,17 @@ class _ActivityAdderState extends State<ActivityAdder> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
+        // this one can be deleted, but it looks neat
         onPressed: _incrementCounter,
         tooltip: 'Increments the counter',
         child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      ),
     );
+  }
+
+  //  makes activity and adds it to calendar based on textbox values
+  void addActivityToCalendar() {
+    print("adding activity:" + nameController.text);
+    // stub
   }
 }
