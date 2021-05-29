@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'ActivityAdder.dart';
-import 'PlaceholderWidget.dart';
 import 'SampleCalendarCode.dart';
+import 'SampleCalendarCode.dart';
+import 'TodayPage.dart';
+import 'PlaceholderWidget.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({Key? key, required this.title}) : super(key: key);
@@ -22,7 +24,7 @@ class _HomePageState extends State<HomePage> {
 
   final List<Widget> _children = [
     SampleCalendarCode(),
-    PlaceholderWidget(Colors.white),
+    TodayPage(),
     ActivityAdder(),
   ];
 
