@@ -119,12 +119,12 @@ class _ActivityAdderState extends State<ActivityAdder> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   ElevatedButton(
-                    onPressed: _incrementCounter,
-                    child: Icon(Icons.add),
-                  ),
-                  ElevatedButton(
                     onPressed: _decrementCounter,
                     child: Icon(Icons.remove),
+                  ),
+                  ElevatedButton(
+                    onPressed: _incrementCounter,
+                    child: Icon(Icons.add),
                   ),
                 ],
               ),

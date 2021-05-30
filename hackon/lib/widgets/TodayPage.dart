@@ -1,5 +1,3 @@
-import 'dart:html';
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
@@ -170,16 +168,16 @@ class _TodayPageState extends State<TodayPage> {
                 margin: EdgeInsets.symmetric(horizontal: 16.0),
                 child: _calendarCarousel,
               ),
-              ListWheelScrollView(
-                children: [
-                  ActivityViewer(),
-                  ActivityViewer(),
-                  ActivityViewer(),
-                  ActivityViewer(),
-                  ActivityViewer(),
-                ],
-                itemExtent: 5,
-              ),
+              // ListWheelScrollView(
+              //   children: [
+              //     ActivityViewer(),
+              //     ActivityViewer(),
+              //     ActivityViewer(),
+              //     ActivityViewer(),
+              //     ActivityViewer(),
+              //   ],
+              //   itemExtent: 5,
+              // ),
             ]),
       ),
     );
