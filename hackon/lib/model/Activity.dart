@@ -97,6 +97,10 @@ class Exercise {
       return prompt;
     }
   }
+
+  String toString() {
+    return "Exercise";
+  }
 }
 
 class Drink {
@@ -138,6 +142,10 @@ class Drink {
         "oz recommended today.";
     return prompt;
   }
+
+  String toString() {
+    return "Drink";
+  }
 }
 
 class Minigame {
@@ -153,5 +161,9 @@ class Minigame {
 
   void setScore(int score) {
     this.score = score;
+  }
+
+  String toString() {
+    return "Minigame";
   }
 }
