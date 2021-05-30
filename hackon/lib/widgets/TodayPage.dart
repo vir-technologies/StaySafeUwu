@@ -1,6 +1,7 @@
 import 'dart:html';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
     show CalendarCarousel;
@@ -154,6 +155,16 @@ class _TodayPageState extends State<TodayPage> {
 //          markedDateIconOffset: 3,
     );
 
+    final List<String> activityNames = <String>[
+      'activity A',
+      'activity B',
+      'activity C',
+      'activity D',
+      'activity E',
+      'activity F',
+      'activity G'
+    ];
+
     Activity sampleActivity = new Activity(ActivityType.drink, DateTime.now());
 
     return new Scaffold(
@@ -171,11 +182,22 @@ class _TodayPageState extends State<TodayPage> {
               Column(
                 children: [
                   SizedBox(
-                      height: 100,
-                      child: ListView(
-                        children: [
-                          ActivityViewer(),
-                        ],
+                      height: 490,
+                      child: ListView.builder(
+                        itemCount: 7,
+                        itemBuilder: (BuildContext context, int index) {
+                          return ActivityViewer(activityNames[index]);
+                        },
+                        // children: [
+                        //   ActivityViewer(),
+                        //   ActivityViewer(),
+                        //   ActivityViewer(),
+                        //   ActivityViewer(),
+                        //   ActivityViewer(),
+                        //   ActivityViewer(),
+                        //   ActivityViewer(),
+                        //   ActivityViewer(),
+                        // ],
                       ))
                 ],
               ),
@@ -204,8 +226,9 @@ class _TodayPageState extends State<TodayPage> {
 // this will display one Activity in a colored box and a short description
 class ActivityViewer extends StatelessWidget {
   // final Activity activity;
+  final String activityName;
 
-  // const ActivityViewer(this.activity);
+  const ActivityViewer([this.activityName = "Title"]);
 
   @override
   Widget build(BuildContext context) {
@@ -214,7 +237,7 @@ class ActivityViewer extends StatelessWidget {
       height: 100,
       margin: EdgeInsets.symmetric(
         horizontal: 15,
-        vertical: 20,
+        vertical: 10,
       ),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -233,7 +256,7 @@ class ActivityViewer extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Title",
+                  activityName,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 20,
