@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
@@ -6,8 +8,6 @@ import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
 
 import '../model/Activity.dart';
-import 'PlaceholderWidget.dart';
-
 // sample calendar code
 
 class TodayPage extends StatefulWidget {
@@ -168,16 +168,17 @@ class _TodayPageState extends State<TodayPage> {
                 margin: EdgeInsets.symmetric(horizontal: 16.0),
                 child: _calendarCarousel,
               ),
-              // ListWheelScrollView(
-              //   children: [
-              //     ActivityViewer(),
-              //     ActivityViewer(),
-              //     ActivityViewer(),
-              //     ActivityViewer(),
-              //     ActivityViewer(),
-              //   ],
-              //   itemExtent: 5,
-              // ),
+              Column(
+                children: [
+                  SizedBox(
+                      height: 100,
+                      child: ListView(
+                        children: [
+                          ActivityViewer(),
+                        ],
+                      ))
+                ],
+              ),
             ]),
       ),
     );

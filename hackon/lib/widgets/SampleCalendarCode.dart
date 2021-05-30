@@ -178,9 +178,7 @@ class _SampleCalendarCodeState extends State<SampleCalendarCode> {
 
     // this  places the widgets in the actual thing!
     return new Scaffold(
-        body: SingleChildScrollView(
-      // todo: do we really need this?
-      child: Column(
+      body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
@@ -230,6 +228,6 @@ class _SampleCalendarCodeState extends State<SampleCalendarCode> {
           ), //
         ],
       ),
-    ));
+    );
   }
 }
