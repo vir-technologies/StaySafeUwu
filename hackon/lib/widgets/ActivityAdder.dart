@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../model/Activity.dart';
 
 // MENU
 int weight = 0;
@@ -30,6 +31,8 @@ class _ActivityAdderState extends State<ActivityAdder> {
   final otherController = TextEditingController();
 
   int _counter = 0;
+  Object? chosenValue;
+  List<Object> activityList = [Exercise, Drink, Minigame];
 
   @override
   void dispose() {
@@ -128,6 +131,30 @@ class _ActivityAdderState extends State<ActivityAdder> {
                   ),
                 ],
               ),
+            ),
+            DropdownButton(
+              hint: Text("Select activity:"),
+              dropdownColor: Colors.white,
+              icon: Icon(Icons.arrow_drop_down_circle),
+              iconSize: 30,
+              // isExpanded: true,
+              underline: SizedBox(),
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+              ),
+              value: chosenValue,
+              onChanged: (newValue) {
+                setState(() {
+                  chosenValue = newValue!;
+                });
+              },
+              items: activityList.map((valueItem) {
+                return DropdownMenuItem(
+                  value: valueItem,
+                  child: Text(valueItem.toString()),
+                );
+              }).toList(),
             ),
             Form(
               key: _formKey,
