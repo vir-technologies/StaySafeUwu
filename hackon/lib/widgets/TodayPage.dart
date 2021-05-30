@@ -1,3 +1,5 @@
+import 'dart:html';
+
 import 'package:flutter/material.dart';
 
 import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
@@ -5,6 +7,7 @@ import 'package:flutter_calendar_carousel/flutter_calendar_carousel.dart'
 import 'package:flutter_calendar_carousel/classes/event.dart';
 import 'package:flutter_calendar_carousel/classes/event_list.dart';
 
+import '../model/Activity.dart';
 import 'PlaceholderWidget.dart';
 
 // sample calendar code
@@ -153,56 +156,58 @@ class _TodayPageState extends State<TodayPage> {
 //          markedDateIconOffset: 3,
     );
 
-    // _calendarCarouselNoHeader makes the "monthly" calendar carousel.
-    // note: this does NOT place the carousel on the widget.
-    /// Example Calendar Carousel without header and custom prev & next button
+    Activity sampleActivity = new Activity(ActivityType.drink, DateTime.now());
 
-    // this  places the widgets in the actual thing!
-    return new Column(children: [
-      Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: <Widget>[
-          Container(
-            margin: EdgeInsets.symmetric(horizontal: 16.0),
-            child: _calendarCarousel,
-          ), // This trailing comma makes auto-formatting nicer for build methods.
-          SingleChildScrollView(
-            // padding
-            child: Column(
-              children: [
-                ActivityViewer(),
-                ActivityViewer(),
-                ActivityViewer(),
-              ],
-            ),
-          ),
-        ],
-      )
-    ]);
+    return new Scaffold(
+      body: Container(
+        // todo: do we really need this?
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              //custom icon
+              Container(
+                margin: EdgeInsets.symmetric(horizontal: 16.0),
+                child: _calendarCarousel,
+              ),
+              ListWheelScrollView(
+                children: [
+                  ActivityViewer(),
+                  ActivityViewer(),
+                  ActivityViewer(),
+                  ActivityViewer(),
+                  ActivityViewer(),
+                ],
+                itemExtent: 5,
+              ),
+            ]),
+      ),
+    );
   }
 }
 
-//         ],: SingleChildScrollView(
-//       // todo: do we really need this?
-//       child: Column(
-//         crossAxisAlignment: CrossAxisAlignment.start,
-//         mainAxisAlignment: MainAxisAlignment.start,
-//         children: <Widget>[
-//           //custom icon
-//           Container(
-//             margin: EdgeInsets.symmetric(horizontal: 16.0),
-//             child: _calendarCarousel,
-//           ), // This trailing comma makes auto-formatting nicer for build methods.
-//           ActivityViewer(),
-//         ],
-//       ),
-//     ));
-//   }
-// }
+// sample listview builder code.
+// final List<String> entries = <String>['A', 'B', 'C'];
+// final List<int> colorCodes = <int>[600, 500, 100];
 
-// this will display one Activity
+// ListView.builder(
+//   padding: const EdgeInsets.all(8),
+//   itemCount: entries.length,
+//   itemBuilder: (BuildContext context, int index) {
+//     return Container(
+//       height: 50,
+//       color: Colors.amber[colorCodes[index]],
+//       child: Center(child: Text('Entry ${entries[index]}')),
+//     );
+//   }
+// );
+
+// this will display one Activity in a colored box and a short description
 class ActivityViewer extends StatelessWidget {
+  // final Activity activity;
+
+  // const ActivityViewer(this.activity);
+
   @override
   Widget build(BuildContext context) {
     return Container(

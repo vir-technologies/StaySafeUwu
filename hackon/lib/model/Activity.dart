@@ -17,7 +17,8 @@ class Activity extends Event {
   String? notes;
 
   /* default constructor for activity only includes activity type */
-  Activity(ActivityType type, DateTime date) : super(date: date) {
+  Activity(ActivityType type, DateTime date, [int value = 0])
+      : super(date: date) {
     setType(type, 0);
     this.notes = "";
   }
