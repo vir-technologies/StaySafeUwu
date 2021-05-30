@@ -27,17 +27,19 @@ class _ActivityAdderState extends State<ActivityAdder> {
   // Note: This is a `GlobalKey<FormState>`,
   // not a GlobalKey<MyCustomFormState>.
   final _formKey = GlobalKey<FormState>();
-  final nameController = TextEditingController();
-  final otherController = TextEditingController();
+  final amountController = TextEditingController();
+  final notesController = TextEditingController();
 
   int _counter = 0;
   Object? chosenValue;
   List<Object> activityList = [Exercise, Drink, Minigame];
+  String prompt = "Please enter an Activity above";
 
   @override
   void dispose() {
     // Clean up the controller(s) when the widget is disposed.
-    nameController.dispose();
+    amountController.dispose();
+    notesController.dispose();
     super.dispose();
   }
 
@@ -148,6 +150,20 @@ class _ActivityAdderState extends State<ActivityAdder> {
                 setState(() {
                   chosenValue = newValue!;
                 });
+
+                switch (chosenValue) {
+                  case Exercise:
+                    prompt = "Enter length of exercise (minutes)";
+                    break;
+                  case Drink:
+                    prompt = "Enter amount of water consumed (glasses)";
+                    break;
+                  case Minigame:
+                    prompt = "Enter score obtained (points)";
+                    break;
+                  default:
+                    prompt = "Please enter an Activity above";
+                }
               },
               items: activityList.map((valueItem) {
                 return DropdownMenuItem(
@@ -159,10 +175,9 @@ class _ActivityAdderState extends State<ActivityAdder> {
             Form(
               key: _formKey,
               child: Column(children: <Widget>[
-                textField("Activity Name", nameController, "cannot be empty",
-                    (x) => (x == null || x.isEmpty)),
-                textField(
-                    "some other field", otherController), // todo: delete this
+                textField(prompt, amountController, "must be an integer",
+                    (x) => (x == null || x.isEmpty || !isDigit(x))),
+                textField("Enter notes", notesController), // todo: delete this
                 Container(
                   margin: EdgeInsets.symmetric(
                     vertical: 10.0,
@@ -194,7 +209,14 @@ class _ActivityAdderState extends State<ActivityAdder> {
 
   //  makes activity and adds it to calendar based on textbox values
   void addActivityToCalendar() {
-    print("adding activity:" + nameController.text);
+    print("adding activity:" + chosenValue.toString());
     // stub
   }
+}
+
+bool isDigit(String s) {
+  if (s == null) {
+    return false;
+  }
+  return int.tryParse(s) != null;
 }
